@@ -25,7 +25,7 @@
 
 - **HTML**
 - **CSS (SCSS)**
-- **JavaScript (Native, Jquery & Magnificp Popup)**
+- **JavaScript (Native)**
 - **Gulp**
 
 ## Файловая структура:
