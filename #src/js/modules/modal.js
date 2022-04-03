@@ -1,4 +1,4 @@
-class Modal {
+export default class Modal {
 	showModal(id) {
 		const modal = document.getElementById(id);
 		const overlay = document.querySelector(".overlay");
@@ -23,7 +23,20 @@ class Modal {
 			input.value = "";
 		});
 	}
+	inputValidation(event) {
+		const form = event.target.parentElement;
+		const modaltaskTitle = form.querySelector(".modal__input");
+		const modalAlertMessage = form.querySelector(".modal__alert-message");
+		if (modaltaskTitle.value == "") {
+			modalAlertMessage.classList.add("active");
+			modaltaskTitle.classList.add("invalid__input");
+			modaltaskTitle.addEventListener("focus", () => {
+				modalAlertMessage.classList.remove("active");
+				modaltaskTitle.classList.remove("invalid__input");
+			});
+			return false;
+		} else {
+			return true;
+		}
+	}
 }
-
-const modal = new Modal();
-export default modal;

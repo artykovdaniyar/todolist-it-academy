@@ -1,8 +1,8 @@
-import modal from "./modules/modal";
-import task from "./modules/task";
+import Modal from "./modules/Modal";
 import TaskList from "./modules/TaskList";
+import TaskItem from "./modules/TaskItem";
 
-let tasksList = [
+let tasksArray = [
 	{ title: "Заголовок задачи", description: "Более длинное описание задачи на несолько строчек, может быть даже на 4. Более длинное описание задачи на несолько строчек, может быть даже на 4", id: 111, done: true },
 	{ title: "Заголовок задачи", description: "Короткое описание", id: 222, done: false },
 	{ title: "Заголовок задачи без описания", description: "", id: 333, done: false },
@@ -10,61 +10,54 @@ let tasksList = [
 	{ title: "Более длинный заголовок задачи на несолько строчек, может быть даже на 3. Более длинный заголовок", description: "", id: 555, done: true },
 	{ title: "Заголовок задачи", description: "Более длинное описание задачи на несолько строчек, может быть даже на 4. Более длинное описание задачи на несолько строчек, может быть даже на 4", id: 666, done: false },
 ];
-let arr = ["sdsd", "sdsdsd", "sdsdsdsd", "sdsdsdsd"];
 
-const tasksListArray = new TaskList(tasksList);
+const tasksList = new TaskList(tasksArray);
 const task = new TaskItem();
-tasksListArray.render();
+tasksList.render();
+
+const modal = new Modal();
+
 // tasksListArray.allTasks = arr;
 // console.log(tasksListArray.allTasks);
 
 // task.updateTasks(tasksList, ".todo__list");
 // task.addEventToInput(tasksList);
 
-// const createTaskButton = document.querySelector(".header__btn");
-// const modalCloseButtons = document.querySelectorAll(".modal__close-btn");
-// const modalOverlay = document.querySelector(".overlay");
-// const modalCancelButtons = document.querySelectorAll(".modal__btn--cancel");
-// const modalWindows = document.querySelectorAll(".modal");
-// const taskDeleteButton = document.querySelectorAll(".todo-item__delete");
-// const createTaskSaveButton = document.querySelector(".modal__btn--save");
+const createTaskButton = document.querySelector(".header__btn");
+const modalCloseButtons = document.querySelectorAll(".modal__close-btn");
+const modalOverlay = document.querySelector(".overlay");
+const modalCancelButtons = document.querySelectorAll(".modal__btn--cancel");
+const modalWindows = document.querySelectorAll(".modal");
+const taskDeleteButton = document.querySelectorAll(".todo-item__delete");
+const createTaskSaveButton = document.querySelector(".modal__btn--save");
 
-// createTaskSaveButton.addEventListener("click", (event) => {
-// 	event.preventDefault();
-// 	const form = event.target.parentElement;
-// 	const modaltaskTitle = form.querySelector(".modal__input");
-// 	const modalAlertMessage = form.querySelector(".modal__alert-message");
-// 	// if (modaltaskTitle.value == "") {
-// 	// 	modalAlertMessage.classList.add("active");
-// 	// 	modaltaskTitle.classList.add("invalid__input");
-// 	// 	modaltaskTitle.addEventListener("focus", () => {
-// 	// 		modalAlertMessage.classList.remove("active");
-// 	// 		modaltaskTitle.classList.remove("invalid__input");
-// 	// 	});
-// 	// }
+createTaskSaveButton.addEventListener("click", (event) => {
+	event.preventDefault();
+	const isValid = modal.inputValidation(event);
+	if (isValid) {
+		task.createTask(event, tasksList);
+		tasksList.render();
+		modal.hideModal(modalWindows);
+	}
+});
 
-// 	task.createTask(event, tasksList);
-// 	task.updateTasks(tasksList, ".todo__list");
-// 	modal.hideModal(modalWindows);
-// });
+// Modal +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+createTaskButton.addEventListener("click", () => {
+	modal.showModal("modalCreateTask");
+});
 
-// // Modal +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// createTaskButton.addEventListener("click", () => {
-// 	modal.showModal("modalCreateTask");
-// });
+modalCloseButtons.forEach((btn) => {
+	btn.addEventListener("click", () => {
+		modal.hideModal(modalWindows);
+	});
+});
 
-// modalCloseButtons.forEach((btn) => {
-// 	btn.addEventListener("click", () => {
-// 		modal.hideModal(modalWindows);
-// 	});
-// });
+modalCancelButtons.forEach((btn) => {
+	btn.addEventListener("click", () => {
+		modal.hideModal(modalWindows);
+	});
+});
 
-// modalCancelButtons.forEach((btn) => {
-// 	btn.addEventListener("click", () => {
-// 		modal.hideModal(modalWindows);
-// 	});
-// });
-
-// modalOverlay.addEventListener("click", () => {
-// 	modal.hideModal(modalWindows);
-// });
+modalOverlay.addEventListener("click", () => {
+	modal.hideModal(modalWindows);
+});

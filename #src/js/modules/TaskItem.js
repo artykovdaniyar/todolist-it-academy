@@ -1,5 +1,5 @@
 export default class TaskItem {
-	create({ title, description, id, done }) {
+	renderTask({ title, description, id, done }) {
 		const listItemTag = document.createElement("li");
 		listItemTag.className = `todo__item todo-item ${done ? "todo__item--done" : ""}`;
 		listItemTag.dataset.id = `${id}`;
@@ -30,5 +30,23 @@ export default class TaskItem {
   </div>
     `;
 		document.querySelector(".todo__list").appendChild(listItemTag);
+	}
+	createTaskId() {
+		const id = Math.random().toString(36).substr(2, 16);
+		return id;
+	}
+	createTask(event, tasksList) {
+		const form = event.target.parentElement;
+		const modaltaskTitle = form.querySelector(".modal__input");
+		const modaltaskDescr = form.querySelector(".modal__textarea");
+
+		const createdTask = {
+			title: modaltaskTitle.value,
+			description: modaltaskDescr.value,
+			id: this.createTaskId(),
+			done: false,
+		};
+		const newTaskList = [...tasksList.allTasks, createdTask];
+		tasksList.allTasks = newTaskList;
 	}
 }
