@@ -42,33 +42,53 @@ class Task {
 		document.querySelector(".todo__list").innerHTML = "";
 	}
 	doneTask(event, arr) {
-		const checkedTaskId = event.target.parentElement.parentElement.parentElement.dataset.id;
-		const changeTaskList = arr.map((task) => {
-			if (task.id == checkedTaskId) {
-				task.done = !task.done;
-				return task;
-			} else {
-				return task;
-			}
-		});
-		console.log(changeTaskList);
-		this.updateTasks(changeTaskList, ".todo__list");
-		this.addEventToInput(changeTaskList);
+		// const checkedTaskId = event.target.parentElement.parentElement.parentElement.dataset.id;
+		// const changeTaskList = arr.map((task) => {
+		// 	if (task.id == checkedTaskId) {
+		// 		task.done = !task.done;
+		// 		return task;
+		// 	} else {
+		// 		return task;
+		// 	}
+		// });
+		// this.updateTasks(changeTaskList, ".todo__list");
+		// this.addEventToInput(changeTaskList);
 	}
-	createTask() {}
-	deleteTask() {}
+	createTask(event, tasksList) {
+		const form = event.target.parentElement;
+		const modaltaskTitle = form.querySelector(".modal__input");
+		const modaltaskDescr = form.querySelector(".modal__textarea");
+		const modalAlertMessage = form.querySelector(".modal__alert-message");
+
+		const createdTask = {
+			title: modaltaskTitle.value,
+			description: modaltaskDescr.value,
+			id: this.createTaskId(),
+			done: false,
+		};
+		tasksList.push(createdTask);
+	}
+	deleteTask(event) {
+		// const deleteTaskId = event.target.parentElement.parentElement.dataset.id;
+		// const changeTaskList = tasksList.filter((task) => {
+		// 	return task.id != deleteTaskId;
+		// });
+		// // console.log(changeTaskList);
+		// this.updateTasks(changeTaskList, ".todo__list");
+		// // this.addEventToInput(changeTaskList);
+	}
 	changeTask() {}
 	createTaskId() {
 		const id = Math.random().toString(36).substr(2, 16);
 		return id;
 	}
 	addEventToInput(tasksList) {
-		const taskDoneCheckboxes = document.querySelectorAll(".todo-checkout > input");
-		taskDoneCheckboxes.forEach((input) => {
-			input.addEventListener("input", (event) => {
-				task.doneTask(event, tasksList);
-			});
-		});
+		// const taskDoneCheckboxes = document.querySelectorAll(".todo-checkout > input");
+		// taskDoneCheckboxes.forEach((input) => {
+		// 	input.addEventListener("input", (event) => {
+		// 		task.doneTask(event, tasksList);
+		// 	});
+		// });
 	}
 }
 const task = new Task();

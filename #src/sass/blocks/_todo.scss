@@ -102,6 +102,9 @@
 	&__delete:hover {
 		color: $color-red;
 	}
+	&__delete-icon {
+		pointer-events: none;
+	}
 }
 .todo-checkout {
 	position: relative;

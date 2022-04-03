@@ -134,6 +134,10 @@ input[type="number"]::-webkit-outer-spin-button {
           flex-grow: 2;
 }
 
+.invalid__input {
+  border: 2px solid #ac4141;
+}
+
 @font-face {
   font-family: "Nunito";
   src: url("../fonts/Nunito-Regular.eot");
@@ -760,6 +764,10 @@ input[type="number"]::-webkit-outer-spin-button {
   color: #ac4141;
 }
 
+.todo-item__delete-icon {
+  pointer-events: none;
+}
+
 .todo-checkout {
   position: relative;
   display: -webkit-box;
@@ -940,6 +948,19 @@ input[type="number"]::-webkit-outer-spin-button {
   resize: vertical;
 }
 
+.modal__alert-message {
+  display: none;
+  margin-top: 10px;
+  font-weight: 900;
+  font-size: 14px;
+  line-height: 16px;
+  color: #ac4141;
+}
+
+.modal__alert-message.active {
+  display: block;
+}
+
 .modal__btn {
   margin-top: 10px;
   width: 100%;
@@ -960,6 +981,10 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .modal__btn--delete {
   background: #ac4141;
+}
+
+.modal__btn--change {
+  background: #57ad56;
 }
 
 @media screen and (max-width: 768px) {

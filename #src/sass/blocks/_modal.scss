@@ -81,7 +81,17 @@
 		max-height: 200px;
 		resize: vertical;
 	}
-
+	&__alert-message {
+		display: none;
+		margin-top: 10px;
+		font-weight: 900;
+		font-size: 14px;
+		line-height: 16px;
+		color: $color-red;
+		&.active {
+			display: block;
+		}
+	}
 	&__btn {
 		margin-top: 10px;
 		width: 100%;
@@ -102,6 +112,9 @@
 	}
 	&__btn--delete {
 		background: $color-red;
+	}
+	&__btn--change {
+		background: $color-green;
 	}
 }
 
