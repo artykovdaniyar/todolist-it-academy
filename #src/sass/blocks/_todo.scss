@@ -25,8 +25,9 @@
 	&__item {
 		display: flex;
 		justify-content: space-between;
+		flex-direction: column;
 		border-radius: 4px;
-		padding: 16px 0 16px 18px;
+		padding: 16px 18px;
 		background: $color-paper;
 		width: calc((100% / 2) - 10px);
 		min-height: 100px;
@@ -63,7 +64,10 @@
 	&__info {
 		color: #000000;
 	}
-
+	&__header {
+		display: flex;
+		justify-content: space-between;
+	}
 	&__title {
 		font-weight: 900;
 		font-size: 16px;
@@ -74,19 +78,20 @@
 		margin-top: 7px;
 		font-size: 16px;
 		line-height: 22px;
+		padding-right: 35px;
 	}
 
 	&__tools {
 		display: flex;
-		flex-direction: column;
 		align-items: center;
-		justify-content: space-between;
-		flex-basis: 52px;
-		flex-shrink: 0;
+		justify-content: flex-end;
+		margin-right: -5px;
 	}
 
 	&__change {
 		color: black;
+		padding: 3px 7px;
+		margin-bottom: -5px;
 	}
 
 	&__change:hover {
@@ -98,6 +103,7 @@
 		justify-content: center;
 		align-items: center;
 		color: black;
+		padding: 3px 7px;
 	}
 	&__delete:hover {
 		color: $color-red;
@@ -116,6 +122,7 @@
 	border: 1px solid #5f81b2;
 	box-sizing: border-box;
 	border-radius: 4px;
+	flex-shrink: 0;
 	&:hover {
 		background: #5f82b242;
 		border: 1px solid $color-green;
