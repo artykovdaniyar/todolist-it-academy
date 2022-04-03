@@ -1,10 +1,19 @@
+import TaskItem from "./TaskItem";
+
 export default class TaskList {
 	constructor(tasks) {
-		this.taks = tasks;
+		this.tasks = tasks;
 	}
 	render() {
-		this.tasks.forEach((task) => {
-			console.log(task);
+		const task = new TaskItem();
+		this.tasks.forEach((taskObj) => {
+			task.create(taskObj);
 		});
+	}
+	get allTasks() {
+		return this.tasks;
+	}
+	set allTasks(tasks) {
+		this.tasks = tasks;
 	}
 }
