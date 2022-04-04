@@ -104,11 +104,11 @@ const js = () => {
 		.pipe(fileinclude())
 		.pipe(
 			bro({
-				transform: [babelify.configure({ presets: ["es2015-riot"] })],
+				transform: [babelify.configure({ presets: ["es2015"] })],
 			}),
 		)
-		.pipe(uglify())
 		.pipe(dest(path.build.js))
+		.pipe(uglify())
 		.pipe(
 			rename({
 				extname: ".min.js",
