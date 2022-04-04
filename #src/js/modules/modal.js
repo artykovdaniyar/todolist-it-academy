@@ -48,10 +48,40 @@ export default class Modal {
 		overlay.classList.add("active");
 		modal.classList.add("active");
 		const deleteTaskButton = document.querySelector(".modal__btn--delete");
-		deleteTaskButton.addEventListener("click", () => {
-			taskObj.deleteTask(event, tasksList);
-			tasksList.render();
-			this.hideModal(modalWindows);
-		});
+		let deletefuncToRemove;
+		deleteTaskButton.addEventListener(
+			"click",
+			(deletefuncToRemove = () => {
+				taskObj.deleteTask(event, tasksList);
+				tasksList.render();
+				this.hideModal(modalWindows);
+				deleteTaskButton.removeEventListener("click", deletefuncToRemove);
+			}),
+		);
+	}
+	showChangeTaskModal(id, taskObj, event) {
+		const modal = document.getElementById(id);
+		const overlay = document.querySelector(".overlay");
+		overlay.classList.add("active");
+		modal.classList.add("active");
+		const taskCard = event.target.parentElement.parentElement;
+		const taskTitleValue = taskCard.querySelector(".todo-item__title").textContent;
+		const taskDescrValue = taskCard.querySelector(".todo-item__descr").textContent;
+		const modalTitleInput = modal.querySelector(".modal__input");
+		const modalDescrInput = modal.querySelector(".modal__textarea");
+		modalTitleInput.value = taskTitleValue;
+		modalDescrInput.value = taskDescrValue;
+		let funcToRemove;
+		const changeTaskButton = document.querySelector(".modal__btn--change");
+		changeTaskButton.addEventListener(
+			"click",
+			(funcToRemove = (e) => {
+				e.preventDefault();
+				taskObj.changeTask(event, tasksList);
+				tasksList.render();
+				this.hideModal(modalWindows);
+				changeTaskButton.removeEventListener("click", funcToRemove);
+			}),
+		);
 	}
 }

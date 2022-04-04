@@ -1,6 +1,6 @@
+import TaskList from "./modules/TaskList.js";
+import TaskItem from "./modules/TaskItem.js";
 import Modal from "./modules/Modal";
-import TaskList from "./modules/TaskList";
-import TaskItem from "./modules/TaskItem";
 
 let tasksArray = [
 	{ title: "Заголовок задачи", description: "Более длинное описание задачи на несолько строчек, может быть даже на 4. Более длинное описание задачи на несолько строчек, может быть даже на 4", id: 111, done: true },
@@ -17,12 +17,6 @@ const task = new TaskItem();
 const modal = new Modal();
 tasksList.render();
 
-// tasksListArray.allTasks = arr;
-// console.log(tasksListArray.allTasks);
-
-// task.updateTasks(tasksList, ".todo__list");
-// task.addEventToInput(tasksList);
-
 const createTaskButton = document.querySelector(".header__btn");
 const modalCloseButtons = document.querySelectorAll(".modal__close-btn");
 const modalOverlay = document.querySelector(".overlay");
@@ -31,6 +25,7 @@ const modalWindows = document.querySelectorAll(".modal");
 const taskDeleteButton = document.querySelectorAll(".todo-item__delete");
 const createTaskSaveButton = document.querySelector(".modal__btn--save");
 const deleteTaskButton = document.querySelector(".modal__btn--delete");
+const changeTaskButton = document.querySelector(".modal__btn--change");
 
 createTaskSaveButton.addEventListener("click", (event) => {
 	event.preventDefault();

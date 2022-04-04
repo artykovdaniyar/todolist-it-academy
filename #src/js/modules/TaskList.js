@@ -21,4 +21,3 @@ export default class TaskList {
 		this.tasks = tasks;
 	}
 }
-const taskList = new TaskList();

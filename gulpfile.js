@@ -1,7 +1,7 @@
 // PATH
 // ===========================================================================
-const project_folder = "dist"
-const source_folder = "#src"
+const project_folder = "dist";
+const source_folder = "#src";
 
 const path = {
 	build: {
@@ -28,7 +28,7 @@ const path = {
 		img: source_folder + "/img/**/*.{png,jpg,svg,gif,ico,webp}",
 	},
 	clean: "./" + project_folder + "/",
-}
+};
 
 const { src, dest } = require("gulp"),
 	gulp = require("gulp"),
@@ -48,7 +48,7 @@ const { src, dest } = require("gulp"),
 	webphtml = require("gulp-webp-html"),
 	webpCss = require("gulp-webp-css"),
 	ttf2woff = require("gulp-ttf2woff"),
-	ttf2woff2 = require("gulp-ttf2woff2")
+	ttf2woff2 = require("gulp-ttf2woff2");
 
 // Functions (Gulp Tasks)
 // ===========================================================================
@@ -59,21 +59,21 @@ const browserSync = (params) => {
 		},
 		port: 3000,
 		notify: false,
-	})
-}
+	});
+};
 const watchFiles = (params) => {
-	gulp.watch([path.watch.html], html)
-	gulp.watch([path.watch.css], css)
-	gulp.watch([path.watch.js], js)
-	gulp.watch([path.watch.img], images)
-}
+	gulp.watch([path.watch.html], html);
+	gulp.watch([path.watch.css], css);
+	gulp.watch([path.watch.js], js);
+	gulp.watch([path.watch.img], images);
+};
 const clean = (params) => {
-	return del(path.clean)
-}
+	return del(path.clean);
+};
 
 const html = () => {
-	return src(path.src.html).pipe(fileinclude()).pipe(webphtml()).pipe(dest(path.build.html)).pipe(browsersync.stream())
-}
+	return src(path.src.html).pipe(fileinclude()).pipe(webphtml()).pipe(dest(path.build.html)).pipe(browsersync.stream());
+};
 const css = () => {
 	return src(path.src.css)
 		.pipe(
@@ -97,14 +97,14 @@ const css = () => {
 			}),
 		)
 		.pipe(dest(path.build.css))
-		.pipe(browsersync.stream())
-}
+		.pipe(browsersync.stream());
+};
 const js = () => {
 	return src(path.src.js)
 		.pipe(fileinclude())
 		.pipe(
 			bro({
-				transform: [babelify.configure({ presets: ["es2015"] })],
+				transform: [babelify.configure({ presets: ["es2015-riot"] })],
 			}),
 		)
 		.pipe(uglify())
@@ -115,8 +115,8 @@ const js = () => {
 			}),
 		)
 		.pipe(dest(path.build.js))
-		.pipe(browsersync.stream())
-}
+		.pipe(browsersync.stream());
+};
 const images = () => {
 	return src(path.src.img)
 		.pipe(
@@ -135,24 +135,24 @@ const images = () => {
 			}),
 		)
 		.pipe(dest(path.build.img))
-		.pipe(browsersync.stream())
-}
+		.pipe(browsersync.stream());
+};
 const fonts = () => {
-	src(path.src.fonts).pipe(ttf2woff()).pipe(dest(path.build.fonts))
-	return src(path.src.fonts).pipe(ttf2woff2()).pipe(dest(path.build.fonts)).pipe(browsersync.stream())
-}
+	src(path.src.fonts).pipe(ttf2woff()).pipe(dest(path.build.fonts));
+	return src(path.src.fonts).pipe(ttf2woff2()).pipe(dest(path.build.fonts)).pipe(browsersync.stream());
+};
 
 // Declerartion of Gulp
 // ===========================================================================
 
-const build = gulp.series(clean, gulp.parallel(js, css, html, images, fonts))
-const watch = gulp.parallel(build, watchFiles, browserSync)
+const build = gulp.series(clean, gulp.parallel(js, css, html, images, fonts));
+const watch = gulp.parallel(build, watchFiles, browserSync);
 
-exports.fonts = fonts
-exports.images = images
-exports.js = js
-exports.css = css
-exports.html = html
-exports.build = build
-exports.watch = watch
-exports.default = watch
+exports.fonts = fonts;
+exports.images = images;
+exports.js = js;
+exports.css = css;
+exports.html = html;
+exports.build = build;
+exports.watch = watch;
+exports.default = watch;

@@ -747,7 +747,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .todo-item__change {
-  color: #545454;
+  color: #414141;
   padding: 3px 7px;
   margin-bottom: -5px;
 }
@@ -774,7 +774,8 @@ input[type="number"]::-webkit-outer-spin-button {
   color: #ac4141;
 }
 
-.todo-item__delete-icon {
+.todo-item__delete-icon,
+.todo-item__change-icon {
   pointer-events: none;
 }
 
@@ -921,6 +922,8 @@ input[type="number"]::-webkit-outer-spin-button {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border-radius: 4px;
+  font-size: 16px;
+  line-height: 22px;
 }
 
 .modal__input::-webkit-input-placeholder, .modal__textarea::-webkit-input-placeholder {

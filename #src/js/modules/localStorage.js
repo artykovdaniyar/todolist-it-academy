@@ -1,4 +1,4 @@
-export default class LocalStorage {
-	getTasks() {}
-	saveTask() {}
-}
+// export default class LocalStorage {
+// 	getTasks() {}
+// 	saveTask() {}
+// }

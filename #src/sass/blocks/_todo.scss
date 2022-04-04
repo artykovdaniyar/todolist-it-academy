@@ -108,7 +108,8 @@
 	&__delete:hover {
 		color: $color-red;
 	}
-	&__delete-icon {
+	&__delete-icon,
+	&__change-icon {
 		pointer-events: none;
 	}
 }

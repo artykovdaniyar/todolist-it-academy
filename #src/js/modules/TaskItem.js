@@ -8,7 +8,7 @@ export default class TaskItem {
 		listItemTag.className = `todo__item todo-item ${done ? "todo__item--done" : ""}`;
 		listItemTag.dataset.id = `${id}`;
 		listItemTag.innerHTML = `
-    <header class="todo-item__header"> 
+    <header class="todo-item__header">
     <h3 class="todo-item__title">${title}</h3>
     <div class="todo-checkout todo-item__checkout">
       <input type="checkbox" ${done ? "checked" : ""} />
@@ -31,11 +31,19 @@ export default class TaskItem {
         <path d="M1.00002 13.8333C1.00002 14.75 1.75002 15.5 2.66669 15.5H9.33335C10.25 15.5 11 14.75 11 13.8333V3.83333H1.00002V13.8333ZM11.8334 1.33333H8.91669L8.08335 0.5H3.91669L3.08335 1.33333H0.166687V3H11.8334V1.33333Z" fill="currentColor" />
       </svg>
     </button>
-  </div>
+   </div>
     `;
 		const taskDeleteButton = listItemTag.querySelector(".todo-item__delete");
+		const taskChangeButton = listItemTag.querySelector(".todo-item__change");
+		const taskDoneCheckBox = listItemTag.querySelector(".todo-checkout input");
+		taskDoneCheckBox.addEventListener("change", (event) => {
+			this.makeItDoneTask(event, tasksList);
+		});
 		taskDeleteButton.addEventListener("click", (event) => {
 			modal.showDeleteTaskModal("modalDeleteTask", this, event);
+		});
+		taskChangeButton.addEventListener("click", (event) => {
+			modal.showChangeTaskModal("modalChangeTask", this, event);
 		});
 		document.querySelector(".todo__list").appendChild(listItemTag);
 	}
@@ -59,9 +67,37 @@ export default class TaskItem {
 	}
 	deleteTask(event, tasksObj) {
 		const deleteTaskId = event.target.parentElement.parentElement.dataset.id;
-		const changeTaskList = tasksObj.allTasks.filter((task) => {
+		const deletedTaskList = tasksObj.allTasks.filter((task) => {
 			return task.id != deleteTaskId;
 		});
+		tasksObj.allTasks = deletedTaskList;
+	}
+	changeTask(event, tasksObj) {
+		const changedTaskId = event.target.parentElement.parentElement.dataset.id;
+		const modalTitleInputValue = document.querySelector("#modalChangeTask .modal__input").value;
+		const modalDescrInputValue = document.querySelector("#modalChangeTask .modal__textarea").value;
+
+		const changedTaskList = tasksObj.allTasks.map((task) => {
+			if (task.id == changedTaskId) {
+				task.title = modalTitleInputValue;
+				task.description = modalDescrInputValue;
+			}
+			return task;
+		});
+		tasksObj.allTasks = changedTaskList;
+	}
+	makeItDoneTask(event, tasksObj) {
+		const checkedTaskId = event.target.parentElement.parentElement.parentElement.dataset.id;
+
+		const changeTaskList = tasksObj.allTasks.map((task) => {
+			if (task.id == checkedTaskId) {
+				task.done = !task.done;
+				return task;
+			} else {
+				return task;
+			}
+		});
 		tasksObj.allTasks = changeTaskList;
+		tasksObj.render();
 	}
 }
