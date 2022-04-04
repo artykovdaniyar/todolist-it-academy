@@ -1,5 +1,4 @@
 import tasksList from "../script";
-const modalWindows = document.querySelectorAll(".modal");
 
 export default class Modal {
 	showModal(id) {
@@ -43,6 +42,7 @@ export default class Modal {
 		}
 	}
 	showDeleteTaskModal(id, taskObj, event) {
+		const modalWindows = document.querySelectorAll(".modal");
 		const modal = document.getElementById(id);
 		const overlay = document.querySelector(".overlay");
 		overlay.classList.add("active");
@@ -77,9 +77,8 @@ export default class Modal {
 			"click",
 			(funcToRemove = (e) => {
 				e.preventDefault();
-				taskObj.changeTask(event, tasksList);
-				tasksList.render();
-				this.hideModal(modalWindows);
+				taskObj.changeTask(event, tasksList, e);
+
 				changeTaskButton.removeEventListener("click", funcToRemove);
 			}),
 		);

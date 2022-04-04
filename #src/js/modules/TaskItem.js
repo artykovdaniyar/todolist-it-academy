@@ -1,6 +1,7 @@
 import tasksList from "../script";
 import Modal from "./Modal";
 const modal = new Modal();
+const modalWindows = document.querySelector(".modal");
 
 export default class TaskItem {
 	renderTask({ title, description, id, done }) {
@@ -72,19 +73,26 @@ export default class TaskItem {
 		});
 		tasksObj.allTasks = deletedTaskList;
 	}
-	changeTask(event, tasksObj) {
-		const changedTaskId = event.target.parentElement.parentElement.dataset.id;
-		const modalTitleInputValue = document.querySelector("#modalChangeTask .modal__input").value;
-		const modalDescrInputValue = document.querySelector("#modalChangeTask .modal__textarea").value;
+	changeTask(event, tasksObj, modalSaveBtnEvent) {
+		modalSaveBtnEvent.preventDefault();
+		const isValidToChange = modal.inputValidation(modalSaveBtnEvent);
+		const modalWindows = document.querySelectorAll(".modal");
 
-		const changedTaskList = tasksObj.allTasks.map((task) => {
-			if (task.id == changedTaskId) {
-				task.title = modalTitleInputValue;
-				task.description = modalDescrInputValue;
-			}
-			return task;
-		});
-		tasksObj.allTasks = changedTaskList;
+		if (isValidToChange) {
+			const changedTaskId = event.target.parentElement.parentElement.dataset.id;
+			const modalTitleInputValue = document.querySelector("#modalChangeTask .modal__input").value;
+			const modalDescrInputValue = document.querySelector("#modalChangeTask .modal__textarea").value;
+			const changedTaskList = tasksObj.allTasks.map((task) => {
+				if (task.id == changedTaskId) {
+					task.title = modalTitleInputValue;
+					task.description = modalDescrInputValue;
+				}
+				return task;
+			});
+			tasksObj.allTasks = changedTaskList;
+			tasksObj.render();
+			modal.hideModal(modalWindows);
+		}
 	}
 	makeItDoneTask(event, tasksObj) {
 		const checkedTaskId = event.target.parentElement.parentElement.parentElement.dataset.id;
