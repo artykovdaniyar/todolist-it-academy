@@ -74,8 +74,6 @@ class Task {
 		// 	return task.id != deleteTaskId;
 		// });
 		// // console.log(changeTaskList);
-		// this.updateTasks(changeTaskList, ".todo__list");
-		// // this.addEventToInput(changeTaskList);
 	}
 	changeTask() {}
 	createTaskId() {

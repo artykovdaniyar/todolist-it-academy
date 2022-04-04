@@ -1,3 +1,6 @@
+import tasksList from "../script";
+const modalWindows = document.querySelectorAll(".modal");
+
 export default class Modal {
 	showModal(id) {
 		const modal = document.getElementById(id);
@@ -38,5 +41,17 @@ export default class Modal {
 		} else {
 			return true;
 		}
+	}
+	showDeleteTaskModal(id, taskObj, event) {
+		const modal = document.getElementById(id);
+		const overlay = document.querySelector(".overlay");
+		overlay.classList.add("active");
+		modal.classList.add("active");
+		const deleteTaskButton = document.querySelector(".modal__btn--delete");
+		deleteTaskButton.addEventListener("click", () => {
+			taskObj.deleteTask(event, tasksList);
+			tasksList.render();
+			this.hideModal(modalWindows);
+		});
 	}
 }

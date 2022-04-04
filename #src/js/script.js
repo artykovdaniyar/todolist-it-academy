@@ -12,10 +12,10 @@ let tasksArray = [
 ];
 
 const tasksList = new TaskList(tasksArray);
+export default tasksList;
 const task = new TaskItem();
-tasksList.render();
-
 const modal = new Modal();
+tasksList.render();
 
 // tasksListArray.allTasks = arr;
 // console.log(tasksListArray.allTasks);
@@ -30,6 +30,7 @@ const modalCancelButtons = document.querySelectorAll(".modal__btn--cancel");
 const modalWindows = document.querySelectorAll(".modal");
 const taskDeleteButton = document.querySelectorAll(".todo-item__delete");
 const createTaskSaveButton = document.querySelector(".modal__btn--save");
+const deleteTaskButton = document.querySelector(".modal__btn--delete");
 
 createTaskSaveButton.addEventListener("click", (event) => {
 	event.preventDefault();

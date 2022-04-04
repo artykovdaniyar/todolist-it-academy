@@ -1,3 +1,7 @@
+import tasksList from "../script";
+import Modal from "./Modal";
+const modal = new Modal();
+
 export default class TaskItem {
 	renderTask({ title, description, id, done }) {
 		const listItemTag = document.createElement("li");
@@ -29,13 +33,17 @@ export default class TaskItem {
     </button>
   </div>
     `;
+		const taskDeleteButton = listItemTag.querySelector(".todo-item__delete");
+		taskDeleteButton.addEventListener("click", (event) => {
+			modal.showDeleteTaskModal("modalDeleteTask", this, event);
+		});
 		document.querySelector(".todo__list").appendChild(listItemTag);
 	}
 	createTaskId() {
 		const id = Math.random().toString(36).substr(2, 16);
 		return id;
 	}
-	createTask(event, tasksList) {
+	createTask(event, tasksObj) {
 		const form = event.target.parentElement;
 		const modaltaskTitle = form.querySelector(".modal__input");
 		const modaltaskDescr = form.querySelector(".modal__textarea");
@@ -46,7 +54,14 @@ export default class TaskItem {
 			id: this.createTaskId(),
 			done: false,
 		};
-		const newTaskList = [...tasksList.allTasks, createdTask];
-		tasksList.allTasks = newTaskList;
+		const newTaskList = [...tasksObj.allTasks, createdTask];
+		tasksObj.allTasks = newTaskList;
+	}
+	deleteTask(event, tasksObj) {
+		const deleteTaskId = event.target.parentElement.parentElement.dataset.id;
+		const changeTaskList = tasksObj.allTasks.filter((task) => {
+			return task.id != deleteTaskId;
+		});
+		tasksObj.allTasks = changeTaskList;
 	}
 }
