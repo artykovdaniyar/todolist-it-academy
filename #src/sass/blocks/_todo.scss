@@ -39,12 +39,14 @@
 		}
 	}
 	&__massage-wrapper {
-		display: flex;
+		display: none;
+		margin-top: 100px;
 		justify-content: center;
 		align-items: center;
-
 		width: 100%;
-		height: 100%;
+		&.active {
+			display: flex;
+		}
 	}
 
 	&__massage {

@@ -1,4 +1,4 @@
-import tasksList from "../script";
+import tasksList from "./TaskList";
 
 export default class Modal {
 	showModal(id) {
@@ -18,11 +18,17 @@ export default class Modal {
 	clearInputFields() {
 		const modaltaskTitleInputs = document.querySelectorAll(".modal__input");
 		const modaltaskDescrTextarea = document.querySelectorAll(".modal__textarea");
+		const formAlertMessage = document.querySelectorAll(".modal__alert-message");
+
 		modaltaskTitleInputs.forEach((input) => {
 			input.value = "";
+			input.classList.remove("invalid__input");
 		});
 		modaltaskDescrTextarea.forEach((input) => {
 			input.value = "";
+		});
+		formAlertMessage.forEach((message) => {
+			message.classList.remove("active");
 		});
 	}
 	inputValidation(event) {

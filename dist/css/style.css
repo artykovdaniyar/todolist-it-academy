@@ -555,6 +555,152 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 }
 
+@-webkit-keyframes bounceInLeft {
+  0%, 60%, 75%, 90%, to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-3000px, 0, 0) translate(-50%, -50%);
+    transform: translate3d(-3000px, 0, 0) translate(-50%, -50%);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: translate3d(25px, 0, 0) translate(-50%, -50%);
+    transform: translate3d(25px, 0, 0) translate(-50%, -50%);
+  }
+
+  75% {
+    -webkit-transform: translate3d(-10px, 0, 0) translate(-50%, -50%);
+    transform: translate3d(-10px, 0, 0) translate(-50%, -50%);
+  }
+
+  90% {
+    -webkit-transform: translate3d(5px, 0, 0) translate(-50%, -50%);
+    transform: translate3d(5px, 0, 0) translate(-50%, -50%);
+  }
+
+  to {
+    -webkit-transform: translateZ(0) translate(-50%, -50%);
+    transform: translateZ(0) translate(-50%, -50%);
+  }
+}
+
+@keyframes bounceInLeft {
+  0%, 60%, 75%, 90%, to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-3000px, 0, 0) translate(-50%, -50%);
+    transform: translate3d(-3000px, 0, 0) translate(-50%, -50%);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: translate3d(25px, 0, 0) translate(-50%, -50%);
+    transform: translate3d(25px, 0, 0) translate(-50%, -50%);
+  }
+
+  75% {
+    -webkit-transform: translate3d(-10px, 0, 0) translate(-50%, -50%);
+    transform: translate3d(-10px, 0, 0) translate(-50%, -50%);
+  }
+
+  90% {
+    -webkit-transform: translate3d(5px, 0, 0) translate(-50%, -50%);
+    transform: translate3d(5px, 0, 0) translate(-50%, -50%);
+  }
+
+  to {
+    -webkit-transform: translateZ(0) translate(-50%, -50%);
+    transform: translateZ(0) translate(-50%, -50%);
+  }
+}
+
+.bounceInLeft {
+  -webkit-animation-name: bounceInLeft;
+  animation-name: bounceInLeft;
+}
+
+@-webkit-keyframes bounceInRight {
+  0%, 60%, 75%, 90%, to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1) translate(-50%, -50%);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1) translate(-50%, -50%);
+  }
+
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(3000px, 0, 0) translate(-50%, -50%);
+    transform: translate3d(3000px, 0, 0) translate(-50%, -50%);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: translate3d(-25px, 0, 0) translate(-50%, -50%);
+    transform: translate3d(-25px, 0, 0) translate(-50%, -50%);
+  }
+
+  75% {
+    -webkit-transform: translate3d(10px, 0, 0) translate(-50%, -50%);
+    transform: translate3d(10px, 0, 0) translate(-50%, -50%);
+  }
+
+  90% {
+    -webkit-transform: translate3d(-5px, 0, 0) translate(-50%, -50%);
+    transform: translate3d(-5px, 0, 0) translate(-50%, -50%);
+  }
+
+  to {
+    -webkit-transform: translateZ(0) translate(-50%, -50%);
+    transform: translateZ(0) translate(-50%, -50%);
+  }
+}
+
+@keyframes bounceInRight {
+  0%, 60%, 75%, 90%, to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1) translate(-50%, -50%);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1) translate(-50%, -50%);
+  }
+
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(3000px, 0, 0) translate(-50%, -50%);
+    transform: translate3d(3000px, 0, 0) translate(-50%, -50%);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: translate3d(-25px, 0, 0) translate(-50%, -50%);
+    transform: translate3d(-25px, 0, 0) translate(-50%, -50%);
+  }
+
+  75% {
+    -webkit-transform: translate3d(10px, 0, 0) translate(-50%, -50%);
+    transform: translate3d(10px, 0, 0) translate(-50%, -50%);
+  }
+
+  90% {
+    -webkit-transform: translate3d(-5px, 0, 0) translate(-50%, -50%);
+    transform: translate3d(-5px, 0, 0) translate(-50%, -50%);
+  }
+
+  to {
+    -webkit-transform: translateZ(0) translate(-50%, -50%);
+    transform: translateZ(0) translate(-50%, -50%);
+  }
+}
+
+.bounceInRight {
+  -webkit-animation-name: bounceInRight;
+  animation-name: bounceInRight;
+}
+
 .header__container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -673,9 +819,8 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .todo__massage-wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
+  margin-top: 100px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -683,7 +828,12 @@ input[type="number"]::-webkit-outer-spin-button {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
-  height: 100%;
+}
+
+.todo__massage-wrapper.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .todo__massage {
@@ -867,9 +1017,23 @@ input[type="number"]::-webkit-outer-spin-button {
   z-index: 3;
 }
 
-.modal.active {
+.modal#modalCreateTask.active {
   -webkit-animation: 0.8s bounceInDown;
           animation: 0.8s bounceInDown;
+  top: 50vh;
+  z-index: 5;
+}
+
+.modal#modalChangeTask.active {
+  -webkit-animation: 0.8s bounceInLeft;
+          animation: 0.8s bounceInLeft;
+  top: 50vh;
+  z-index: 5;
+}
+
+.modal#modalDeleteTask.active {
+  -webkit-animation: 0.8s bounceInRight;
+          animation: 0.8s bounceInRight;
   top: 50vh;
   z-index: 5;
 }
@@ -984,6 +1148,17 @@ input[type="number"]::-webkit-outer-spin-button {
   line-height: 22px;
   color: #ffffff;
   border-radius: 4px;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.modal__btn:hover {
+  opacity: 0.8;
+}
+
+.modal__btn:active {
+  opacity: 1;
 }
 
 .modal__btn--save {

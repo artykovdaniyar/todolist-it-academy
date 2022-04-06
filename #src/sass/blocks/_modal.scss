@@ -29,11 +29,22 @@
 	flex-direction: column;
 	background: $color-paper;
 	z-index: 3;
-	&.active {
+	&#modalCreateTask.active {
 		animation: 0.8s bounceInDown;
 		top: 50vh;
 		z-index: 5;
 	}
+	&#modalChangeTask.active {
+		animation: 0.8s bounceInLeft;
+		top: 50vh;
+		z-index: 5;
+	}
+	&#modalDeleteTask.active {
+		animation: 0.8s bounceInRight;
+		top: 50vh;
+		z-index: 5;
+	}
+
 	&__title {
 		font-size: 20px;
 		line-height: 27px;
@@ -98,11 +109,17 @@
 		margin-top: 10px;
 		width: 100%;
 		padding: 9px 15px;
-
 		font-size: 16px;
 		line-height: 22px;
 		color: #ffffff;
 		border-radius: 4px;
+		transition: all 0.3s;
+	}
+	&__btn:hover {
+		opacity: 0.8;
+	}
+	&__btn:active {
+		opacity: 1;
 	}
 
 	&__btn--save {

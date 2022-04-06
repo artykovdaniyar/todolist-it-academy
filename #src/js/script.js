@@ -1,6 +1,7 @@
-import TaskList from "./modules/TaskList.js";
+import tasksList from "./modules/TaskList.js";
 import TaskItem from "./modules/TaskItem.js";
 import Modal from "./modules/Modal";
+import localStorageDb from "./modules/LocalStorage";
 
 let tasksArray = [
 	{ title: "Заголовок задачи", description: "Более длинное описание задачи на несолько строчек, может быть даже на 4. Более длинное описание задачи на несолько строчек, может быть даже на 4", id: 111, done: true },
@@ -10,9 +11,7 @@ let tasksArray = [
 	{ title: "Более длинный заголовок задачи на несолько строчек, может быть даже на 3. Более длинный заголовок", description: "", id: 555, done: true },
 	{ title: "Заголовок задачи", description: "Более длинное описание задачи на несолько строчек, может быть даже на 4. Более длинное описание задачи на несолько строчек, может быть даже на 4", id: 666, done: false },
 ];
-
-const tasksList = new TaskList(tasksArray);
-export default tasksList;
+localStorageDb.saveTasks(tasksArray);
 const task = new TaskItem();
 const modal = new Modal();
 tasksList.render();
