@@ -11,11 +11,10 @@ let tasksArray = [
 	{ title: "Более длинный заголовок задачи на несолько строчек, может быть даже на 3. Более длинный заголовок", description: "", id: 555, done: true },
 	{ title: "Заголовок задачи", description: "Более длинное описание задачи на несолько строчек, может быть даже на 4. Более длинное описание задачи на несолько строчек, может быть даже на 4", id: 666, done: false },
 ];
-localStorageDb.saveTasks(tasksArray);
+
 const task = new TaskItem();
 const modal = new Modal();
 tasksList.render();
-
 const createTaskButton = document.querySelector(".header__btn");
 const modalCloseButtons = document.querySelectorAll(".modal__close-btn");
 const modalOverlay = document.querySelector(".overlay");

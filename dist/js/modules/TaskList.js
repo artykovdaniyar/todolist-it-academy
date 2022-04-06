@@ -312,6 +312,23 @@ var TaskList = function () {
 			});
 			_localStorage2.default.saveTasks(this.tasks);
 			this.displayNoTasksMessage();
+			this.upDateCouners();
+		}
+	}, {
+		key: "upDateCouners",
+		value: function upDateCouners() {
+			var allTasksTodo = document.querySelector(".todo-counter__alltasks");
+			var unfinishedTasks = document.querySelector(".todo-counter__tasks");
+			var finishedTasks = document.querySelector(".todo-counter__done");
+			var unfinishedTasksNum = 0;
+			var finishedTasksNum = 0;
+
+			this.tasks.forEach(function (task) {
+				task.done ? finishedTasksNum++ : unfinishedTasksNum++;
+			});
+			allTasksTodo.innerHTML = "\u0412\u0441\u0435 \u0437\u0430\u0434\u0430\u0447\u0438: " + this.tasks.length;
+			finishedTasks.innerHTML = "\u0417\u0430\u0432\u0435\u0440\u0448\u0435\u043D\u043D\u044B\u0435: " + finishedTasksNum;
+			unfinishedTasks.innerHTML = "\u041D\u0443\u0436\u043D\u043E \u0441\u0434\u0435\u043B\u0430\u0442\u044C: " + unfinishedTasksNum;
 		}
 	}, {
 		key: "allTasks",

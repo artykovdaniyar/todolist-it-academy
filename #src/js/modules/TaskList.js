@@ -25,6 +25,21 @@ class TaskList {
 		});
 		localStorageDb.saveTasks(this.tasks);
 		this.displayNoTasksMessage();
+		this.upDateCouners();
+	}
+	upDateCouners() {
+		const allTasksTodo = document.querySelector(".todo-counter__alltasks");
+		const unfinishedTasks = document.querySelector(".todo-counter__tasks");
+		const finishedTasks = document.querySelector(".todo-counter__done");
+		let unfinishedTasksNum = 0;
+		let finishedTasksNum = 0;
+
+		this.tasks.forEach((task) => {
+			task.done ? finishedTasksNum++ : unfinishedTasksNum++;
+		});
+		allTasksTodo.innerHTML = `Все задачи: ${this.tasks.length}`;
+		finishedTasks.innerHTML = `Завершенные: ${finishedTasksNum}`;
+		unfinishedTasks.innerHTML = `Нужно сделать: ${unfinishedTasksNum}`;
 	}
 	get allTasks() {
 		return this.tasks;

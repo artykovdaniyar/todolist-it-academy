@@ -352,6 +352,23 @@ var TaskList = function () {
 			});
 			_localStorage2.default.saveTasks(this.tasks);
 			this.displayNoTasksMessage();
+			this.upDateCouners();
+		}
+	}, {
+		key: "upDateCouners",
+		value: function upDateCouners() {
+			var allTasksTodo = document.querySelector(".todo-counter__alltasks");
+			var unfinishedTasks = document.querySelector(".todo-counter__tasks");
+			var finishedTasks = document.querySelector(".todo-counter__done");
+			var unfinishedTasksNum = 0;
+			var finishedTasksNum = 0;
+
+			this.tasks.forEach(function (task) {
+				task.done ? finishedTasksNum++ : unfinishedTasksNum++;
+			});
+			allTasksTodo.innerHTML = "\u0412\u0441\u0435 \u0437\u0430\u0434\u0430\u0447\u0438: " + this.tasks.length;
+			finishedTasks.innerHTML = "\u0417\u0430\u0432\u0435\u0440\u0448\u0435\u043D\u043D\u044B\u0435: " + finishedTasksNum;
+			unfinishedTasks.innerHTML = "\u041D\u0443\u0436\u043D\u043E \u0441\u0434\u0435\u043B\u0430\u0442\u044C: " + unfinishedTasksNum;
 		}
 	}, {
 		key: "allTasks",
@@ -431,11 +448,10 @@ var _LocalStorage2 = _interopRequireDefault(_LocalStorage);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var tasksArray = [{ title: "Заголовок задачи", description: "Более длинное описание задачи на несолько строчек, может быть даже на 4. Более длинное описание задачи на несолько строчек, может быть даже на 4", id: 111, done: true }, { title: "Заголовок задачи", description: "Короткое описание", id: 222, done: false }, { title: "Заголовок задачи без описания", description: "", id: 333, done: false }, { title: "Заголовок задачи", description: "Короткое описание на 2 строчки", id: 444, done: false }, { title: "Более длинный заголовок задачи на несолько строчек, может быть даже на 3. Более длинный заголовок", description: "", id: 555, done: true }, { title: "Заголовок задачи", description: "Более длинное описание задачи на несолько строчек, может быть даже на 4. Более длинное описание задачи на несолько строчек, может быть даже на 4", id: 666, done: false }];
-_LocalStorage2.default.saveTasks(tasksArray);
+
 var task = new _TaskItem2.default();
 var modal = new _Modal2.default();
 _TaskList2.default.render();
-
 var createTaskButton = document.querySelector(".header__btn");
 var modalCloseButtons = document.querySelectorAll(".modal__close-btn");
 var modalOverlay = document.querySelector(".overlay");

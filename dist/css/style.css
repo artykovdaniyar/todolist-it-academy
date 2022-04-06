@@ -973,6 +973,23 @@ input[type="number"]::-webkit-outer-spin-button {
   display: block;
 }
 
+.todo-counter {
+  color: #fff;
+  font-size: 18px;
+}
+
+.todo-counter__alltasks {
+  margin-top: 15px;
+}
+
+.todo-counter__done {
+  margin-top: 5px;
+}
+
+.todo-counter__tasks {
+  margin-top: 5px;
+}
+
 .overlay {
   position: fixed;
   width: 100%;
