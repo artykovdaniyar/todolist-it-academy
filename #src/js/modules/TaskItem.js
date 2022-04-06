@@ -1,7 +1,6 @@
-import tasksList from "../script";
+import tasksList from "./TaskList";
 import Modal from "./Modal";
 const modal = new Modal();
-const modalWindows = document.querySelector(".modal");
 
 export default class TaskItem {
 	renderTask({ title, description, id, done }) {
